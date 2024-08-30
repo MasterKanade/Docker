@@ -1,0 +1,39 @@
+1) Hypervisor uses the concept called Virtualization.
+2) Virtualization is a concept which creates a multiple virtual machines or servers.
+It is a logical sepration of new machines (it may or may be different operating systems) on top of your physical server. Virtual server is a basically a logical isolation.
+3) In Virtualization each of the machine have operating system and on the top of the virtualization you will run your applications. The virtual machines are tightly seprated they doesn't share anything, they have own boundaries.
+===================================================================================
+Qu: If virtualization working very well then why we moved towards the concept of container?
+==> The biggest disadvantage of virtualization is we are not using the resources to it's fullest capacity.
+Let we have physical machine of 100GB RAM and 100 CPU and we have created 4 virtual machines with 20GB and 20CPU each for logical isolation for respective applications.
+However, after some days we have seen that the application one in Virtual machine one is only using 15GB of RAM and 5 CPU with highest threshold. It will be waste of 5 GB of RAM and 15 CPU of that particular virtual machine. We need to pay for that unused waste of RAM and CPU. Opex (operational cost) of project would be getting high.
+However, virtualization is very secured in terms of containerization due to tight isolation of operating systems.
+
+To get better idea please refer image Hypervisor.png
+=======================================================================================
+EC2 instance is running out of memory is a very less.
+We are not creating the number of EC2 instances per application. Like no any company in this world can create number of EC2 instance per application.
+EC2 instances are flexible in nature however maintaining the number of EC2 instances is cumbersome process, and here the containers are comes into the picture.
+========================================================================================
+1. Containers have solved the problems with virtual machines.
+2. Containers are very light weight in nature.
+3. Containers do not have the complete operating system
+4 Containers uses the resources such as RAM OR STORAGE from the host/physical machine's operating system.
+5. Containers have minimal operating system or we say they have base image.
+6. Container is nothing but a package or bundle which is a combination of base image + your application + application libraries + system dependencies.
+7. System dependencies like your application need python libraries etc.
+8. Why containers are the light weight in nature?
+   ==> They do not have a complete operationg system they have minimal image.
+        OR base image and this base image have system dependencies.
+        This Base Image + System dependencies + Application Libraries form a container or a docker image.
+9. Docker is a set of platform as a service (PAAS) products that use OS-level virtualization to deliver software in packages called containers.
+========================================================================================
+
+Container Lifecycle or Docker Lifecycle:
+1. Write a docker file 
+2. Execute dockerfile and create an Image (by using docker build command)
+3. Execute an Image to create a container. (by using docker run command)
+
+You've to put your all commands (application configurations) into dockerfile and submit that file into the docker engine 
+
+Docker engines are single point of failures, if docker engine fails then entire container system would also fail. To solve this problem and also the layer problems of image the Builda tool is used.
