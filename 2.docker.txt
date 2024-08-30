@@ -1,0 +1,10 @@
+What is Docker?
+==> 
+Docker is a set of platform as a service (PAAS) products that use OS-level virtualization to deliver software in packages called containers.
+The software that hosts the containers is called Docker Engine.
+Docker implements containerization.
+
+Docker Architecture:
+==>
+1. Docker daemon process is the brain of docker. (please refer 3.docker-architecture image)
+The Docker daemon (dockerd) listens for Docker API requests and manages Docker objects such as images, containers, networks, and volumes. A daemon can also communicate with other daemons to manage Docker services.
