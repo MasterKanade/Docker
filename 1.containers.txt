@@ -40,3 +40,44 @@ You've to put your all commands (application configurations) into dockerfile and
 
 Docker engines are single point of failures, if docker engine fails then entire container system would also fail. 
 To solve this problem and also the layer problems of image the Builda tool is used.
+======================================================================================
+
+Containers doesn't share the file systems with each other,
+if containers shares the file structure to the other containers ( like:
+/bin: contains binary executable files, such as the ls, cp, and ps commands.
+/sbin: contains system binary executable files, such as the init and shutdown commands.
+/etc: contains configuration files for various system services.
+/lib: contains library files that are used by the binary executables.
+/usr: contains user-related files and utilities, such as applications, libraries, and documentation.
+/var: contains variable data, such as log files, spool files, and temporary files.
+/root: is the home directory of the root user.
+) 
+then it is a biggest security comporomised.
+The containers are then not secured in this case.
+This file structure are not part of the host operating system kernel
+they are part of the host minimal image or base image.
+
+Docker containers are designed to be minimal, only including what is necessary for the application to run, further reducing their size.
+
+official ubuntu VM image it will be close to ~ 2.3 GB however, the container created
+for the same ubuntu image will only have 22MB size.
+
+====================================================================================
+
+Qu. what are the files and folders containers used from the Host Operating System?
+==>
+    The host's file system: Docker containers can access the host file system using bind mounts, which allow the container to read and write files in the host file system.
+
+    Networking stack: The host's networking stack is used to provide network connectivity to the container. Docker containers can be connected to the host's network directly or through a virtual network.
+
+    System calls: The host's kernel handles system calls from the container, which is how the container accesses the host's resources, such as CPU, memory, and I/O.
+
+    Namespaces: Docker containers use Linux namespaces to create isolated environments for the container's processes. Namespaces provide isolation for resources such as the file system, process ID, and network.
+
+    Control groups (cgroups): Docker containers use cgroups to limit and control the amount of resources, such as CPU, memory, and I/O, that a container can access.
+    
+    It's important to note that while a container uses resources from the host operating system, it is still isolated from the host and other containers, so changes to the container do not affect the host or other containers.
+
+    therefore, in a nutshell, container base images are typically smaller compared to VM images because they are designed to be minimalist and only contain the necessary components for running a specific application or service. VMs, on the other hand, emulate an entire operating system, including all its libraries, utilities, and system files, resulting in a much larger size.
+====================================================================================
+
